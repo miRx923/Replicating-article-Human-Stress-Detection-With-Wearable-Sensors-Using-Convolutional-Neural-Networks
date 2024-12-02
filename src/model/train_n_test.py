@@ -5,6 +5,10 @@ import torch.nn as nn
 from torch.utils.data import DataLoader
 import torch.optim as optim
 from sklearn.metrics import accuracy_score, f1_score
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.getcwd(), "src")))
 
 from model.cnn_model import StressCNN
 from dataset_class.stress_dataset import StressDataset
