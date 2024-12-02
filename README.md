@@ -146,5 +146,7 @@ The replicated article does not mention whether data normalization or standardiz
 
 ---
 
-## Reference:
-Manuel Gil-Martin, Ruben San-Segundo, Ana Mateos, and Javier Ferreiros-Lopez. (2022). Human Stress Detection With Wearable Sensors Using Convolutional Neural Networks. Ciudad Universitaria, 28040 Madrid, Spain. DOI: 10.1109/MAES.2021.3115198. 
+## References:
+**Article:** Manuel Gil-Martin, Ruben San-Segundo, Ana Mateos, and Javier Ferreiros-Lopez. (2022). Human Stress Detection With Wearable Sensors Using Convolutional Neural Networks. Ciudad Universitaria, 28040 Madrid, Spain. DOI: 10.1109/MAES.2021.3115198.
+
+**Dataset:** https://ubi29.informatik.uni-siegen.de/usi/data_wesad.html
