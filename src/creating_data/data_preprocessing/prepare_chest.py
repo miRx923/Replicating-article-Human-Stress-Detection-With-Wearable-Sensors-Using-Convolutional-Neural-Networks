@@ -5,7 +5,7 @@ import os
 
 
 
-DATA_PATH = '../../../data/original/'
+DATA_PATH = 'data/original/'
 chest_columns = ['sid', 'acc1', 'acc2', 'acc3', 'ecg', 'emg', 'eda', 'temp', 'resp', 'label']
 all_columns = ['sid', 'c_acc_x', 'c_acc_y', 'c_acc_z', 'ecg', 'emg', 'c_eda', 'c_temp', 'resp',
                'w_acc_x', 'w_acc_y', 'w_acc_z', 'bvp', 'w_eda', 'w_temp', 'label']
@@ -27,7 +27,7 @@ def pkl_to_np_wrist(filename, subject_id):
     wrist_bvp = np.asarray(unpickled_df["signal"]["wrist"]["BVP"], dtype=np.float16)
     wrist_eda = np.asarray(unpickled_df["signal"]["wrist"]["EDA"], dtype=np.float16)
     wrist_temp = np.asarray(unpickled_df["signal"]["wrist"]["TEMP"], dtype=np.float16)
-    lbl = np.asarray(unpickled_df["label"].reshape(-1, 1), dtype=np.int32)  # Assume labels are integers
+    lbl = np.asarray(unpickled_df["label"].reshape(-1, 1), dtype=np.int32) 
     
     n_wrist_acc = wrist_acc.shape[0]
     n_wrist_bvp = wrist_bvp.shape[0]
@@ -87,9 +87,9 @@ def merge_wrist_data():
             md2 = np.concatenate((md2, current_md2), axis=0)
             md3 = np.concatenate((md3, current_md3), axis=0)
     
-    fn_merged1 = '../../../data/processed/subj_merged_acc_w.pkl'
-    fn_merged2 = '../../../data/processed/subj_merged_bvp_w.pkl'
-    fn_merged3 = '../../../data/processed/subj_merged_eda_temp_w.pkl'
+    fn_merged1 = 'data/processed/subj_merged_acc_w.pkl'
+    fn_merged2 = 'data/processed/subj_merged_bvp_w.pkl'
+    fn_merged3 = 'data/processed/subj_merged_eda_temp_w.pkl'
     all_columns1 = ['sid', 'w_acc_x', 'w_acc_y', 'w_acc_z', 'label']
     all_columns2 = ['sid', 'bvp', 'label']
     all_columns3 = ['sid', 'w_eda', 'w_temp', 'label']
@@ -136,7 +136,7 @@ def merge_chest_data():
         else:
             merged_data = np.concatenate((merged_data, current_data), axis=0)
     
-    fn_merged = '../../../data/processed/merged_chest.pkl'
+    fn_merged = 'data/processed/merged_chest.pkl'
     df = pd.DataFrame(merged_data, columns=chest_columns)
     
     # Convert numerical columns to float16
@@ -147,7 +147,7 @@ def merge_chest_data():
 
 
 def filter_chest_data():
-    df = pd.read_pickle("../../../data/processed/merged_chest.pkl")
+    df = pd.read_pickle("data/processed/merged_chest.pkl")
     
     # Filter labels and temperature
     df_fltr = df[df["label"].isin([1, 2, 3, 4])]
@@ -157,8 +157,8 @@ def filter_chest_data():
     float_cols = ['acc1', 'acc2', 'acc3', 'ecg', 'emg', 'eda', 'temp', 'resp']
     df_fltr[float_cols] = df_fltr[float_cols].astype('float16')
     
-    df_fltr.to_pickle("../../../data/processed/chest.pkl")
-    os.remove("../../../data/processed/merged_chest.pkl")
+    df_fltr.to_pickle("data/processed/chest.pkl")
+    os.remove("data/processed/merged_chest.pkl")
 
     print("Saved chest.pkl")
 

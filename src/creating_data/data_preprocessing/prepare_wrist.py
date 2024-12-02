@@ -1,7 +1,11 @@
 import pandas as pd
 import os
+import sys
+
+sys.path.append(os.path.abspath(os.path.join(os.getcwd(), "src")))
 
 from utils import load_data, save_data, resample_signal_interpolation, convert_columns_to_int32
+
 
 
 def process_subject(df_acc, df_bvp, df_eda_temp, subject_id):
@@ -67,8 +71,8 @@ df_all = pd.concat(all_subjects_data, ignore_index=True)
 # Save unfiltered merged_wrist.pkl
 save_data(df_all, 'wrist.pkl')
 
-os.remove('../../../data/processed/subj_merged_acc_w.pkl')
-os.remove('../../../data/processed/subj_merged_bvp_w.pkl')
-os.remove('../../../data/processed/subj_merged_eda_temp_w.pkl')
+os.remove('data/processed/subj_merged_acc_w.pkl')
+os.remove('data/processed/subj_merged_bvp_w.pkl')
+os.remove('data/processed/subj_merged_eda_temp_w.pkl')
 
 print("\nwrist.pkl was successfully created.")

@@ -1,8 +1,12 @@
 import pandas as pd
 from math import gcd
 import os
+import sys
+
+sys.path.append(os.path.abspath(os.path.join(os.getcwd(), "src")))
 
 from utils import load_data, convert_columns_to_int32, resample_signal_poly, save_data, merge_chest_wrist, delete0567
+
 
 
 def process_subject_chest(df_chest, subject_id, original_fs=700, target_fs=64):
@@ -59,7 +63,7 @@ def process_subject_chest(df_chest, subject_id, original_fs=700, target_fs=64):
 
 
 # Load chest data
-df_chest = load_data('chest.pkl')
+df_chest = load_data('data/processed/chest.pkl')
 
 # Convert 'sid' and 'label' columns to integer types
 df_chest = convert_columns_to_int32(df_chest, ['sid', 'label'])
@@ -74,8 +78,8 @@ for subject_id in unique_sids:
 
 # Combine data from all subjects
 df_all_chest = pd.concat(all_subjects_chest_data, ignore_index=True)
-save_data(df_all_chest, 'chest_64hz.pkl')
-os.remove('chest.pkl')
+save_data(df_all_chest, 'data/processed/chest_64hz.pkl')
+os.remove('data/processed/chest.pkl')
 
 print("\nSaved chest_64hz.pkl")
 
