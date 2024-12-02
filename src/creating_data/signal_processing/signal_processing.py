@@ -5,8 +5,12 @@ from scipy.signal import resample
 from joblib import Parallel, delayed
 from tqdm import tqdm
 import os
+import sys
+
+sys.path.append(os.path.abspath(os.path.join(os.getcwd(), "src")))
 
 from utils import normalize_data
+
 
 
 # Number of target points in the spectrum
@@ -154,9 +158,9 @@ def process_data(input_file, output_fft, output_fft_cr, output_fft_cr_cqt):
     os.remove(input_file)
 
     # Normalize all three files
-    normalize_data(output_fft, '../../../data/processed/fft_normalized.pkl')
-    normalize_data(output_fft_cr, '../../../data/processed/fft_cr_normalized.pkl')
-    normalize_data(output_fft_cr_cqt, '../../../data/processed/fft_cr_cqt_normalized.pkl')
+    normalize_data(output_fft, 'data/processed/fft_normalized.pkl')
+    normalize_data(output_fft_cr, 'data/processed/fft_cr_normalized.pkl')
+    normalize_data(output_fft_cr_cqt, 'data/processed/fft_cr_cqt_normalized.pkl')
 
     os.remove(output_fft)
     os.remove(output_fft_cr)
@@ -165,8 +169,8 @@ def process_data(input_file, output_fft, output_fft_cr, output_fft_cr_cqt):
 
 # Run signal processing
 process_data(
-    input_file='../../../data/processed/all_data_final.pkl',
-    output_fft='../../../data/processed/fft.pkl',
-    output_fft_cr='../../../data/processed/fft_cr.pkl',
-    output_fft_cr_cqt='../../../data/processed/fft_cr_cqt.pkl'
+    input_file='data/processed/all_data_final.pkl',
+    output_fft='data/processed/fft.pkl',
+    output_fft_cr='data/processed/fft_cr.pkl',
+    output_fft_cr_cqt='data/processed/fft_cr_cqt.pkl'
 )
