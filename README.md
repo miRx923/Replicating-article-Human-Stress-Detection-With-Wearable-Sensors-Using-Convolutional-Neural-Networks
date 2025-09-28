@@ -46,7 +46,7 @@ The replicated article does not mention whether data normalization or standardiz
 
 ## Results (replicated):
 <table>
-  <caption>Table 2. Accuracy (%) and F1-score (%) Depending on the Signal Processing Module Considering all Signals in the Three Classification Tasks</caption>
+  <caption>Table 1. Accuracy (%) and F1-score (%) Depending on the Signal Processing Module Considering all Signals in the Three Classification Tasks</caption>
   <thead>
     <tr>
       <th rowspan="2">Signal processing</th>
